@@ -4,5 +4,6 @@ RUN git clone https://github.com/marcelmaatkamp/tor.git
 WORKDIR tor
 
 RUN ./autogen.sh && ./configure --disable-asciidoc && make && make install && make dist-gzip
-ADD torrc /usr/local/etc/tor/torrc
+ADD torrc /etc/tor/torrc
 EXPOSE 9001 9050
+CMD tor -f /etc/tor/torrc
